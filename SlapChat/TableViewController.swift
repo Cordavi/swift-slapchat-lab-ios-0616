@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-    }
+   
+   let dataStore = DataStore.sharedDataStore
+   
+   override func viewDidLoad() {
+      super.viewDidLoad()
+      
+      dataStore.fetchData()
+      
+      if dataStore.messages.isEmpty {
+         dataStore.generateTestData()
+      }
+   }
+   
+   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return dataStore.messages.count
+   }
+   
+   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      let newCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+      
+      newCell.textLabel?.text = dataStore.messages[indexPath.row].content
+      return newCell
+   }
 }
