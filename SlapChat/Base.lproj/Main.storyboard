@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -25,7 +26,7 @@
                                             <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -38,12 +39,58 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hPh-B6-6eu">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="SYd-iy-GQY"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="SYd-iy-GQY">
+                            <connections>
+                                <segue destination="QN9-7A-T2l" kind="presentation" id="GjY-4H-BtC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejz-2p-aJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957" y="339"/>
+        </scene>
+        <!--Add Message View Controller-->
+        <scene sceneID="1ww-ce-tif">
+            <objects>
+                <viewController id="QN9-7A-T2l" customClass="AddMessageViewController" customModule="SlapChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dfK-HB-D5F"/>
+                        <viewControllerLayoutGuide type="bottom" id="1xR-84-rWG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QOB-LP-JZU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VWA-AK-oPR">
+                                <rect key="frame" x="60" y="285" width="480" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlq-p8-6Nt">
+                                <rect key="frame" x="283" y="345" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="savedTapped:" destination="QN9-7A-T2l" eventType="touchUpInside" id="sXi-eO-iGq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VWA-AK-oPR" firstAttribute="centerY" secondItem="QOB-LP-JZU" secondAttribute="centerY" id="6iZ-L8-SYg"/>
+                            <constraint firstItem="VWA-AK-oPR" firstAttribute="width" secondItem="QOB-LP-JZU" secondAttribute="width" multiplier="0.8" id="Mk7-E7-iUL"/>
+                            <constraint firstItem="qlq-p8-6Nt" firstAttribute="centerX" secondItem="VWA-AK-oPR" secondAttribute="centerX" id="QuJ-jp-JDE"/>
+                            <constraint firstItem="qlq-p8-6Nt" firstAttribute="centerY" secondItem="VWA-AK-oPR" secondAttribute="centerY" multiplier="1.2" id="UFH-RC-d9E"/>
+                            <constraint firstItem="VWA-AK-oPR" firstAttribute="centerX" secondItem="QOB-LP-JZU" secondAttribute="centerX" id="amz-5F-8F9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="VWA-AK-oPR" id="OAZ-es-2nq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SmN-TD-XPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GI5-Nd-ee2">

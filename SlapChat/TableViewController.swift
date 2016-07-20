@@ -23,6 +23,12 @@ class TableViewController: UITableViewController {
       }
    }
    
+   override func viewDidAppear(animated: Bool) {
+      super.viewDidAppear(true)
+      dataStore.fetchData()
+      tableView.reloadData()
+   }
+   
    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return dataStore.messages.count
    }
