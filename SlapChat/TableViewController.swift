@@ -39,4 +39,9 @@ class TableViewController: UITableViewController {
       newCell.textLabel?.text = dataStore.messages[indexPath.row].content
       return newCell
    }
+   
+   @IBAction func refreshTapped(sender: AnyObject) {
+      dataStore.dataToFetchByData()
+      tableView.reloadData()
+   }
 }

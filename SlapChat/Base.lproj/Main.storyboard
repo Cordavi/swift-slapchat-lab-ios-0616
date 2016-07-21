@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -39,11 +40,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hPh-B6-6eu">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="SYd-iy-GQY">
-                            <connections>
-                                <segue destination="QN9-7A-T2l" kind="presentation" id="GjY-4H-BtC"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="add" id="SYd-iy-GQY">
+                                <connections>
+                                    <segue destination="QN9-7A-T2l" kind="presentation" id="GjY-4H-BtC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Syq-4G-ZU9">
+                                <connections>
+                                    <action selector="refreshTapped:" destination="XAu-n2-nEF" id="Tms-Ce-Siz"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejz-2p-aJF" userLabel="First Responder" sceneMemberID="firstResponder"/>

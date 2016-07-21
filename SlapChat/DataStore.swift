@@ -45,6 +45,18 @@ class DataStore {
       }
    }
    
+   func dataToFetchByData() {
+      let dataToFetchByDate = NSFetchRequest(entityName: "Message")
+      dataToFetchByDate.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: true)]
+      
+      do {
+         messages = try managedObjectContext.executeFetchRequest(dataToFetchByDate) as! [Message]
+      } catch {
+         let fetchError = error as NSError
+         print(fetchError)
+      }
+   }
+   
    func fetchData ()
    {
       let dataToFetch = NSFetchRequest(entityName: "Message")
